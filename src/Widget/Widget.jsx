@@ -45,17 +45,16 @@ const Widget = () => {
   const nonFav = ITEMS.filter((item) => !favorites.has(item.id));
   const favList = ITEMS.filter((item) => favorites.has(item.id));
   const slots = 4 - favList.length;
-  const itemsWithIndex = ITEMS.map((item, idx) => ({ ...item, idx }));
-  const display = itemsWithIndex
-  .map(item => ({
-    ...item,
-    isFav: favorites.has(item.id)
-  }))
-  .sort((a, b) => {
-    if (a.isFav === b.isFav) return a.idx - b.idx;
-    return a.isFav ? -1 : 1;
-  })
-  .slice(0, 4);
+  const cycle =
+    nonFav.length > 0
+      ? nonFav.slice(offset, offset + slots).length === slots
+        ? nonFav.slice(offset, offset + slots)
+        : [
+            ...nonFav.slice(offset),
+            ...nonFav.slice(0, slots - (nonFav.length - offset)),
+          ]
+      : [];
+  const display = [...favList, ...cycle];
 
   const handleNext = () => {
     if (nonFav.length) setOffset((offset + slots) % nonFav.length);
