@@ -60,7 +60,7 @@ const Widget = () => {
     if (nonFav.length) setOffset((offset + slots) % nonFav.length);
   };
 
-  const handleTryOn = () => {};
+  // const handleTryOn = () => {};
 
   return (
     <div
@@ -133,7 +133,27 @@ const Widget = () => {
           </div>
         ))}
       </div>
-      <div className='widget__result'>"RESULT"</div>
+      <div className='widget__result'>"IMG RESULT"</div>
+      <div className='widget__favorites'>
+        <h3 className='widget__favorites-title'>Your Favorites</h3>
+
+        {favList.length > 0 ? (
+          <ul className='widget__favorites-list'>
+            {favList.map((item) => (
+              <li key={item.id} className='widget__favorite-item'>
+                <span className='widget__favorite-name'>{item.name}</span>
+                <FaHeart
+                  className='widget__favorite-remove'
+                  onClick={() => toggleFavorite(item.id)}
+                  title='Убрать из избранного'
+                />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className='widget__favorites-empty'>You have no favorite items yet.</p>
+        )}
+      </div>
     </div>
   );
 };
