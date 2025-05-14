@@ -54,7 +54,7 @@ const Widget = () => {
             ...nonFav.slice(0, slots - (nonFav.length - offset)),
           ]
       : [];
-  const display = [...favList, ...cycle];
+  const display = ITEMS.slice(offset, offset + 4);
 
   const handleNext = () => {
     if (nonFav.length) setOffset((offset + slots) % nonFav.length);
