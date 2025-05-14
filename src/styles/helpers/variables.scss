@@ -1,0 +1,27 @@
+:root {
+  --color-primary:    #3498db;
+  --color-secondary:  #2ecc71;
+  --toggle-icon-color: #333333;
+}
+
+.light {
+  --bg-color:            #f5f5f5;
+  --text-color:          #333333;
+  --card-bg:             #ffffff;
+  --nav-bar-bg:          #f8f9fa;
+  --toggle-icon-color:   #000000;
+  --navbar-active-color: var(--color-primary);
+  --navbar-active-bg: rgba(52, 152, 219, 0.1);
+}
+
+.dark {
+  --bg-color:            #333333;
+  --text-color:          #f5f5f5;
+  --card-bg:             #444444;
+  --nav-bar-bg:          #2a2a2a;
+  --toggle-icon-color:   #ffffff;
+  --navbar-active-color: #a29bfe;
+  --navbar-active-bg: rgba(162, 155, 254, 0.2);
+}
+
+$delay: 0.5s;
